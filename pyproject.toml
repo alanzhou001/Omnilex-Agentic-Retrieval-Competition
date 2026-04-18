@@ -1,7 +1,7 @@
 [project]
 name = "omnilex-retrieval"
 version = "0.1.0"
-description = "Omnilex Agentic Retrieval Competition - Swiss Legal Citation Retrieval"
+description = "Omnilex Agentic Retrieval Competition - Swiss Legal Citation Retrieval -- For LLM Group Work"
 readme = "README.md"
 license = {text = "Apache-2.0"}
 requires-python = ">=3.10"
@@ -9,6 +9,20 @@ authors = [
     {name = "Omnilex Team"}
 ]
 keywords = ["legal-nlp", "retrieval", "swiss-law", "kaggle-competition"]
+dependencies = [
+    "datasets>=2.14.0",
+    "huggingface-hub>=0.17.0",
+    "ipykernel>=6.25.0",
+    "ipywidgets>=8.0.0",
+    "jupyter>=1.0.0",
+    "llama-cpp-python>=0.2.0",
+    "numpy>=1.24.0",
+    "pandas>=2.0.0",
+    "pydantic>=2.0.0",
+    "rank-bm25>=0.2.2",
+    "scikit-learn>=1.3.0",
+    "tqdm>=4.65.0",
+]
 
 [build-system]
 requires = ["hatchling"]
@@ -16,6 +30,10 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/omnilex"]
+
+[[tool.uv.index]]
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+default = true
 
 [tool.ruff]
 line-length = 100
@@ -31,3 +49,10 @@ addopts = "-v"
 [tool.mypy]
 python_version = "3.10"
 strict = false
+
+[dependency-groups]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "ruff>=0.1.0",
+]
